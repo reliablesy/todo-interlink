@@ -1,0 +1,10 @@
+### WordPress template
+*.log
+
+/.htaccess
+/sitemap.xml
+/sitemap.xml.gz
+/.idea/
+
+error_log
+adminer.php

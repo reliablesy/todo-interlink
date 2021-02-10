@@ -1,0 +1,37 @@
+.importantButton {
+    color: white;
+    background: blueviolet;
+}
+
+.importantFlag {
+    background: orange;
+}
+#added {
+    color: black;
+}
+
+
+#add {
+    color: red;
+}
+
+#create {
+    color: orange;
+    background-color: yellow;
+}
+
+#button {
+    color: #7CFC00;
+}
+
+#todo-txt {
+    color: red;
+}
+
+#todo {
+    background-color: #FF4500;
+}
+
+#input-txt {
+    color: red;
+}
