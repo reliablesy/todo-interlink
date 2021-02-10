@@ -18,12 +18,14 @@ function save(list) {
     const listString = JSON.stringify(list);
     localStorage.setItem(LIST_SAVE_KEY, listString);
 }
+let container = document.getElementById('added');
 
 function f() {
     const i = localStorage.getItem(LIST_SAVE_KEY);
-    JSON.parse(i);
-    return(i);
-    console.log(i);
+    const parseTodo = JSON.parse(i);
+    for (let todoItem of parseTodo) {
+        container.appendChild(todoItem.title);
+    }
 }
 
 function add() {
