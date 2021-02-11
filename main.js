@@ -21,26 +21,37 @@ function save(list) {
 let localAdd = document.getElementById('localAdd');
 
 function f() {
+
     const i = localStorage.getItem(LIST_SAVE_KEY);
     const parseTodo = JSON.parse(i);
     for (let todoItem of parseTodo.todos) {
+
         const input = document.getElementById(`input-txt`);
         const root = document.getElementById(`todo-txt`);
         const wrapper = document.createElement(`div`);
+        wrapper.className = "wrapper";
 
         const toggle = document.createElement(`input`);
+        toggle.className = "toggleClass";
+
         const clean = document.createElement(`button`);
+        clean.className = "cleanClass";
 
         const completeText = document.createElement(`span`);
+        completeText.className = "completeTextClass";
+
         const todoText = document.createElement(`input`);
+        todoText.className = "todoTextClass";
+
         const tagImportant = document.createElement(`button`);
+        tagImportant.className = "tagImportantClass";
 
         todoText.value = todoItem.title;
         toggle.type = 'checkbox';
         clean.innerHTML = `Удалить`;
         input.value = '';
         completeText.innerText = `Выполнено!`;
-        tagImportant.innerText = `Приоритет`;
+        tagImportant.innerText = `☑`;
         tagImportant.className = "importantButton";
 
         root.appendChild(wrapper);
@@ -51,29 +62,38 @@ function f() {
 
         tagImportant.addEventListener(`click`, function () {
             if (todoItem.buttonImportantCheck == false) {
-                tagImportant.innerText = `O`;
+                tagImportant.innerText = `❌`;
             } else {
-                tagImportant.innerText = `Приоритет`;
+                tagImportant.innerText = `☑`;
             }
             todoItem.buttonImporatntCheck = !todoItem.buttonImportantCheck;
+            console.log(todoItem.buttonImportantCheck);
         });
 
         clean.addEventListener(`click`, function () {
             wrapper.remove();
             list.todos = list.todos.filter(value => todoItem !== value);
             save(list);
-            localStorage.removeItem(LIST_SAVE_KEY);
+
         });
 
         function mark() {
             todoText.style.textDecoration = `line-through`;
             completeText.style.display = `block`;
             todoText.before(completeText);
+            todoText.style.transition = "2s";
+            todoText.style.background = "rgba(0,0,0,.3)";
+            wrapper.style.transition = "2s";
+            wrapper.style.background = "rgba(0,0,0,.3)";
+            todoText.style.display = "none";
         }
 
         function unmark() {
             completeText.style.display = `none`;
             todoText.style.textDecoration = `none`;
+            wrapper.style.transition = "2s";
+            wrapper.style.background = "url(\"assets/list-picture.jpg\")";
+            todoText.style.display = "block";
         }
 
         toggle.addEventListener('click', () => {
@@ -92,14 +112,24 @@ function add() {
 
     const input = document.getElementById(`input-txt`);
     const root = document.getElementById(`todo-txt`);
+
     const wrapper = document.createElement(`div`);
+    wrapper.className = "wrapper";
 
     const toggle = document.createElement(`input`);
+    toggle.className = "toggleClass";
+
     const clean = document.createElement(`button`);
+    clean.className = "cleanClass";
 
     const completeText = document.createElement(`span`);
+    completeText.className = "completeTextClass";
+
     const todoText = document.createElement(`input`);
+    todoText.className = "todoTextClass";
+
     const tagImportant = document.createElement(`button`);
+    tagImportant.className = "tagImportantClass";
 
     let todo = {
         title: input.value,
@@ -112,7 +142,7 @@ function add() {
     clean.innerHTML = `Удалить`;
     input.value = '';
     completeText.innerText = `Выполнено!`;
-    tagImportant.innerText = `Приоритет`;
+    tagImportant.innerText = `☑`;
     tagImportant.className = "importantButton";
 
     root.appendChild(wrapper);
@@ -124,9 +154,9 @@ function add() {
 
     tagImportant.addEventListener(`click`, function () {
         if (todo.buttonImportantCheck == false) {
-            tagImportant.innerText = `O`;
+            tagImportant.innerText = `❌`;
         } else {
-            tagImportant.innerText = `Приоритет`;
+            tagImportant.innerText = `☑`;
         }
         todo.buttonImporatntCheck = !todo.buttonImportantCheck;
     });
