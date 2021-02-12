@@ -43,32 +43,32 @@ function f() {
         const todoText = document.createElement(`input`);
         todoText.className = "todoTextClass";
 
-        const tagImportant = document.createElement(`button`);
-        tagImportant.className = "tagImportantClass";
+        // const tagImportant = document.createElement(`button`);
+        // tagImportant.className = "tagImportantClass";
 
         todoText.value = todoItem.title;
         toggle.type = 'checkbox';
         clean.innerHTML = `Удалить`;
         input.value = '';
         completeText.innerText = `Выполнено!`;
-        tagImportant.innerText = `☑`;
-        tagImportant.className = "importantButton";
+        // tagImportant.innerText = `☑`;
+        // tagImportant.className = "importantButton";
 
         root.appendChild(wrapper);
         wrapper.appendChild(todoText);
         wrapper.appendChild(toggle);
         wrapper.appendChild(clean);
-        wrapper.appendChild(tagImportant);
+        // wrapper.appendChild(tagImportant);
 
-        tagImportant.addEventListener(`click`, function () {
-            if (todoItem.buttonImportantCheck == false) {
-                tagImportant.innerText = `❌`;
-            } else {
-                tagImportant.innerText = `☑`;
-            }
-            todoItem.buttonImporatntCheck = !todoItem.buttonImportantCheck;
-            console.log(todoItem.buttonImportantCheck);
-        });
+        // tagImportant.addEventListener(`click`, function () {
+        //     if (todoItem.buttonImportantCheck == false) {
+        //         tagImportant.innerText = `❌`;
+        //     } else {
+        //         tagImportant.innerText = `☑`;
+        //     }
+        //     todoItem.buttonImporatntCheck = !todoItem.buttonImportantCheck;
+        //     console.log(todoItem.buttonImportantCheck);
+        // });
 
         clean.addEventListener(`click`, function () {
             wrapper.remove();
@@ -82,9 +82,12 @@ function f() {
             completeText.style.display = `block`;
             todoText.before(completeText);
             todoText.style.transition = "2s";
+            completeText.style.background = "rgba(0,0,0,.3)";
             todoText.style.background = "rgba(0,0,0,.3)";
             wrapper.style.transition = "2s";
             wrapper.style.background = "rgba(0,0,0,.3)";
+            todoText.style.display = "none";
+            // tagImportant.style.display = "none";
             todoText.style.display = "none";
         }
 
@@ -94,6 +97,8 @@ function f() {
             wrapper.style.transition = "2s";
             wrapper.style.background = "url(\"assets/list-picture.jpg\")";
             todoText.style.display = "block";
+            clean.style.display = "inline-block";
+            // tagImportant.style.display = "inline-block";
         }
 
         toggle.addEventListener('click', () => {
@@ -128,8 +133,8 @@ function add() {
     const todoText = document.createElement(`input`);
     todoText.className = "todoTextClass";
 
-    const tagImportant = document.createElement(`button`);
-    tagImportant.className = "tagImportantClass";
+    // const tagImportant = document.createElement(`button`);
+    // tagImportant.className = "tagImportantClass";
 
     let todo = {
         title: input.value,
@@ -142,24 +147,24 @@ function add() {
     clean.innerHTML = `Удалить`;
     input.value = '';
     completeText.innerText = `Выполнено!`;
-    tagImportant.innerText = `☑`;
-    tagImportant.className = "importantButton";
+    // tagImportant.innerText = `☑`;
+    // tagImportant.className = "importantButton";
 
     root.appendChild(wrapper);
     wrapper.appendChild(todoText);
     wrapper.appendChild(toggle);
     wrapper.appendChild(clean);
-    wrapper.appendChild(tagImportant);
+    // wrapper.appendChild(tagImportant);
 
 
-    tagImportant.addEventListener(`click`, function () {
-        if (todo.buttonImportantCheck == false) {
-            tagImportant.innerText = `❌`;
-        } else {
-            tagImportant.innerText = `☑`;
-        }
-        todo.buttonImporatntCheck = !todo.buttonImportantCheck;
-    });
+    // tagImportant.addEventListener(`click`, function () {
+    //     if (todo.buttonImportantCheck === false) {
+    //         tagImportant.innerText = `❌`;
+    //     } else {
+    //         tagImportant.innerText = `☑`;
+    //     }
+    //     todo.buttonImporatntCheck = !todo.buttonImportantCheck;
+    // });
 
     clean.addEventListener(`click`, function () {
         wrapper.remove();
@@ -171,11 +176,24 @@ function add() {
         todoText.style.textDecoration = `line-through`;
         completeText.style.display = `block`;
         todoText.before(completeText);
+        todoText.style.transition = "2s";
+        todoText.style.background = "rgba(0,0,0,.3)";
+        completeText.style.background = "rgba(0,0,0,.3)";
+        wrapper.style.transition = "2s";
+        wrapper.style.background = "rgba(0,0,0,.3)";
+        todoText.style.display = "none";
+        // tagImportant.style.display = "none";
+        todoText.style.display = "none";
     }
 
     function unmark() {
         completeText.style.display = `none`;
         todoText.style.textDecoration = `none`;
+        wrapper.style.transition = "2s";
+        wrapper.style.background = "url(\"assets/list-picture.jpg\")";
+        todoText.style.display = "block";
+        clean.style.display = "inline-block";
+        // tagImportant.style.display = "inline-block";
     }
 
     list.todos.push(todo);
